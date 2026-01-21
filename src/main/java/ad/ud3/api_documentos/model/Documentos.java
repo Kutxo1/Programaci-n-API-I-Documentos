@@ -1,16 +1,16 @@
-package ad.ud3.api_documentos.documentos;
+package ad.ud3.api_documentos.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import ad.ud3.api_documentos.dto.AutorDTO;
+import ad.ud3.api_documentos.dto.DocumentosDTO;
 
 import java.util.List;
 
 @Data // Genera Getters, Setters automáticamente mediante Lombok
 @NoArgsConstructor // Crea un constructor vacío, obligatorio para JPA
 @Entity // Indica que esta clase es una tabla de la base de datos
-@Table(name = "autores") // Nombre físico de la tabla en Maria08
+@Table(name = "Documentos") // Nombre físico de la tabla en MariaDB
 public class Documentos {
 
     @Id // Define la clave primaria
@@ -27,12 +27,14 @@ public class Documentos {
     @OneToMany(mappedBy = "autor", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Libro> libros;
 // Constructor manual para convertir un DTO en Entidad rápidamente
-    usaye
 
-    public Autor(AutorDTO autorDTO) {
-        this.id autorDTO.getId();
-        this.nombre autorDTO.getNombre();
-        this.apellido autorDTO.getApellido();
-        this.telefono autorDTO.getTelefono();
+    public Documentos(DocumentosDTO documentosDTO) {
+        this.id_documento = documentosDTO.getId_documento();
+        this.id_usuario = documentosDTO.getId_usuario();
+        this.id_permiso = documentosDTO.getId_permiso();
+        this.nombre = documentosDTO.getNombre();
+        this.descripcion = documentosDTO.getDescripcion();
+        this.fecha_creacion = documentosDTO.getFecha_creacion();
+        this.fecha_modificacion = documentosDTO.getFecha_modificacion();
     }
 }
