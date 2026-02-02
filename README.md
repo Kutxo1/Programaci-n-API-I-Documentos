@@ -1,0 +1,1 @@
+La API recibe peticiones, las pasa al controlador, el controlador llama al servicio, el servicio usa el repositorio para acceder a la base de datos, convierte los datos en DTOs y los devuelve al cliente.
